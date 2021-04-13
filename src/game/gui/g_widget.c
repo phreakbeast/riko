@@ -1,0 +1,137 @@
+#include "g_gui.h"
+
+#include <stdlib.h>
+#include <assert.h>
+
+void gui_widget_destroy(GuiWidget* widget)
+{
+	switch (widget->type)
+	{
+	case GUI_WIDGET_BUTTON: {
+		free(widget->button);
+	}break;
+	case GUI_WIDGET_IMAGE: {
+		free(widget->image);
+	}break;
+	case GUI_WIDGET_TEXT: {
+		free(widget->text);
+	}break;
+	case GUI_WIDGET_CHECKBOX: {
+		free(widget->checkbox);
+	}break;
+	case GUI_WIDGET_SLIDER: {
+		free(widget->slider);
+	}break;
+	default:
+		break;
+	}
+}
+
+GuiWidget* gui_widget_create_button()
+{
+	GuiWidget* widget = malloc(sizeof(GuiWidget));
+	assert(widget);
+
+	widget->type = GUI_WIDGET_BUTTON;
+	widget->button = malloc(sizeof(GuiButton));
+	gui_button_init(widget->button);
+
+	widget->checkbox = NULL;
+	widget->image = NULL;
+	widget->text = NULL;	
+	widget->slider = NULL;
+
+	return widget;
+}
+
+GuiWidget* gui_widget_create_image()
+{
+	GuiWidget* widget = malloc(sizeof(GuiWidget));
+	assert(widget);
+
+	widget->type = GUI_WIDGET_IMAGE;
+	widget->image = malloc(sizeof(GuiImage));
+	gui_image_init(widget->image);
+	
+	widget->button = NULL;
+	widget->text = NULL;
+	widget->checkbox = NULL;
+	widget->slider = NULL;
+
+	return widget;
+}
+
+GuiWidget* gui_widget_create_text()
+{
+	GuiWidget* widget = malloc(sizeof(GuiWidget));
+	assert(widget);
+
+	widget->type = GUI_WIDGET_TEXT;
+	widget->text = malloc(sizeof(GuiText));
+	gui_text_init(widget->text);
+	
+	widget->image = NULL;
+	widget->button = NULL;
+	widget->checkbox = NULL;
+	widget->slider = NULL;
+
+	return widget;
+}
+
+GuiWidget* gui_widget_create_checkbox()
+{
+	GuiWidget* widget = malloc(sizeof(GuiWidget));
+	assert(widget);
+
+	widget->type = GUI_WIDGET_CHECKBOX;
+	widget->checkbox = malloc(sizeof(GuiCheckbox));
+	gui_checkbox_init(widget->checkbox);
+
+	widget->button = NULL;
+	widget->image = NULL;
+	widget->text = NULL;	
+	widget->slider = NULL;
+
+	return widget;
+}
+
+GuiWidget* gui_widget_create_slider()
+{
+	GuiWidget* widget = malloc(sizeof(GuiWidget));
+	assert(widget);
+
+	widget->type = GUI_WIDGET_SLIDER;
+	widget->slider = malloc(sizeof(GuiSlider));
+	gui_slider_init(widget->slider);
+
+	widget->checkbox = NULL;
+	widget->image = NULL;
+	widget->text = NULL;	
+	widget->button = NULL;
+
+	return widget;
+}
+
+void gui_widget_update(GuiWidget* widget, float delta, Rect parent_rect)
+{
+	switch (widget->type)
+	{
+	case GUI_WIDGET_BUTTON: {
+		gui_button_update(widget->button, delta, parent_rect);
+	}break;
+	case GUI_WIDGET_IMAGE: {
+		gui_image_update(widget->image, delta, parent_rect);
+	}break;
+	case GUI_WIDGET_TEXT: {
+		gui_text_update(widget->text, delta, parent_rect);
+	}break;
+	case GUI_WIDGET_CHECKBOX: {
+		gui_checkbox_update(widget->checkbox, delta, parent_rect);
+	}break;
+	case GUI_WIDGET_SLIDER: {
+		gui_slider_update(widget->slider, delta, parent_rect);
+	}break;
+	default:
+		break;
+	}
+}
