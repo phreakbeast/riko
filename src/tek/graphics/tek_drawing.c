@@ -5,6 +5,7 @@
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 static RenderStats g_stats;
 static u32 g_drawcalls = 0;
@@ -511,7 +512,7 @@ void renderer_draw_mesh_instanced(Mesh* mesh, Texture* texture, Transform* trans
         shader_uniform_int(g_geometry_instanced_shader, 7, 0); //use light
     }
     
-    mesh_render(mesh, mvp_mats, world_mats, num_instances);
+    mesh_render_instanced(mesh, mvp_mats, world_mats, num_instances);
     
     free(mvp_mats);
     free(world_mats);

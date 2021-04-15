@@ -39,11 +39,11 @@ ShadowMapFBO* shadow_map_create(u32 window_width, u32 window_height)
 	glDrawBuffer(GL_NONE);
 	glReadBuffer(GL_NONE);
 
-	GLenum Status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+	GLenum status_res = glCheckFramebufferStatus(GL_FRAMEBUFFER);
 
-	if (Status != GL_FRAMEBUFFER_COMPLETE) 
+	if (status_res != GL_FRAMEBUFFER_COMPLETE) 
 	{
-		printf("FB error, status: 0x%x\n", Status);
+		printf("FB error, status: 0x%x\n", status_res);
 		free(shadow_map);
 		return NULL;
 	}

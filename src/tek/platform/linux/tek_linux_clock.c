@@ -1,10 +1,7 @@
-#include "../tek_clock.hpp"
+#include "../tek_clock.h"
 
 #include <time.h>
 
-namespace platform
-{
-    
     static struct timespec g_start_ticks;
     
     void time_init()
@@ -20,4 +17,4 @@ namespace platform
         return res / 1000.0;
     }
     
-}
+

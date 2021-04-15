@@ -1,4 +1,4 @@
-#include "../tek_window.hpp"
+#include "../tek_window.h"
 
 #include <X11/X.h>
 #include <X11/Xlib.h>
@@ -7,10 +7,8 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "../../graphics/tek_opengl.hpp"
+#include "../../graphics/tek_opengl.h"
 
-namespace platform
-{
     
     static void init_keys();
     
@@ -483,4 +481,4 @@ namespace platform
         g_keys_defs[111] = KEY_UP;
     }
     
-}
+

@@ -34,6 +34,7 @@ typedef struct gui_button_s
 	GuiState state;
 
 	void (*on_click)(void);	
+	void (*on_hover)(void);	
 }GuiButton;
 
 void gui_button_init(GuiButton* btn);
@@ -70,6 +71,8 @@ typedef struct gui_checkbox_s
 	float width;
 	float height;
 	bool checked;	
+	void (*on_click)(void);	
+	void (*on_hover)(void);	
 }GuiCheckbox;
 
 void gui_checkbox_init(GuiCheckbox* checkbox);
@@ -85,6 +88,8 @@ typedef struct gui_slider_s
 	int min_value;
 	int max_value;
 	int cur_value;
+	void (*on_hover)(void);	
+	void (*on_change)(void);	
 }GuiSlider;
 
 void gui_slider_init(GuiSlider* slider);

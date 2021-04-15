@@ -17,7 +17,7 @@ add_definitions(-DTEK_64)
     if (WIN32)
 
         set(PLATFORM_FILES
-                "src/tek/platform/win32/*.cpp"
+                "src/tek/platform/win32/*.c"
                 )
 
         set(PLATFORM_INCLUDES
@@ -40,7 +40,7 @@ add_definitions(-DTEK_64)
         message(STATUS "OPENGL_LIBRARIES = ${OPENGL_LIBRARIES}")
 
         set(PLATFORM_FILES
-                "src/tek/platform/linux/*.cpp"
+                "src/tek/platform/linux/*.c"
                 )
 
         set(PLATFORM_INCLUDES
@@ -64,14 +64,14 @@ link_directories(
 
 file(GLOB SOURCES
         ${PLATFORM_FILES}
-        "src/*.cpp"
-        "src/tek/*.cpp"
-        "src/tek/utils/*.cpp"
-        "src/tek/graphics/*.cpp"
-        "src/tek/math/*.cpp"
-        "src/tek/platform/*.cpp"
-        "src/game/*.cpp"
-        "src/game/gui/*.cpp"
+        "src/*.c"
+        "src/tek/*.c"
+        "src/tek/utils/*.c"
+        "src/tek/graphics/*.c"
+        "src/tek/math/*.c"
+        "src/tek/platform/*.c"
+        "src/game/*.c"
+        "src/game/gui/*.c"
         )
 
 add_executable(argos ${SOURCES})

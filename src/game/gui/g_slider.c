@@ -26,7 +26,7 @@ void gui_slider_update(GuiSlider* slider, float delta, Rect parent_rect)
 
 	sb_render_rect(line_dest, colors->hover);
 
-	Rect grab_dest = { dest.x, dest.y, dest.w, dest.h };
+	Rect grab_dest = { dest.x, dest.y, 5, dest.h };
 
-	sb_render_rect(grab_dest, colors->hover);
+	sb_render_rect(grab_dest, colors->pressed);
 }

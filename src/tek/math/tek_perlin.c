@@ -1,5 +1,5 @@
 #include "tek_perlin.h"
-
+#include <stdlib.h>
 
 void perlin1d_init(Perlin1D* perlin, int size, int octaves, float bias)
 {

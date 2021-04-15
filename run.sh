@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./bin/tek97
+./bin/argos
