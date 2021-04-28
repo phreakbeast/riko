@@ -7,8 +7,8 @@ layout(location = 1) in vec2 a_uv;
 layout(location = 2) in vec3 a_normal;
 layout(location = 3) in vec4 a_color;
 
-layout(location = 0) uniform mat4 u_mvp;
-layout(location = 1) uniform mat4 u_world;
+uniform mat4 u_mvp;
+uniform mat4 u_world;
 
 out VertexData
 {
@@ -45,10 +45,10 @@ in VertexData
 
 #in lighting.glsl
 
-layout(location = 2) uniform DirectionalLight u_direct_light;
+uniform DirectionalLight u_direct_light;
 
-layout(location = 6) uniform vec3 u_eye_world_pos;
-layout(location = 7) uniform int u_use_light;
+uniform vec3 u_eye_world_pos;
+uniform int u_use_light;
 
 layout(location = 0) out vec4 out_color;
 

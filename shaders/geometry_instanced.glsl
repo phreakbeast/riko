@@ -45,14 +45,14 @@ in VertexData
 
 #in lighting.glsl
 
-layout(location = 2) uniform DirectionalLight u_direct_light;
+uniform DirectionalLight u_direct_light;
 
 
-layout(location = 6) uniform vec3 u_eye_world_pos;
-layout(location = 7) uniform int u_use_light;
+uniform vec3 u_eye_world_pos;
+uniform int u_use_light;
 
-layout(location = 8) uniform sampler2D u_texture;
-layout(location = 9) uniform int u_use_texture;
+uniform sampler2D u_texture;
+uniform int u_use_texture;
 
 layout(location = 0) out vec4 out_color;
 

@@ -22,6 +22,20 @@ struct PointLight
     Attenuation atten;
 };
 
+float calc_shadow_factor(vec4 light_space_pos, in sampler2D shadow_map)
+{
+    vec3 proj_coords = light_space_pos.xyz / light_space_pos.w;
+    vec2 uv_coords;
+    uv_coords.x = 0.5 * proj_coords.x + 0.5;
+    uv_coords.y = 0.5 * proj_coords.y + 0.5;
+    float z = 0.5 * proj_coords.z + 0.5;
+    float depth = texture(shadow_map, uv_coords).x;
+    if (depth < (z + 0.00001))
+        return 0.5;
+    else
+        return 1.0;
+}
+
 vec4 calculate_light(DirectionalLight light, vec3 normal, vec3 direction, vec3 eye_world_pos, vec3 world_pos, float specular_intensity, float specular_power, float shadow_factor)
 {
 	vec4 ambient_color = vec4(light.color * light.intensity, 1.0);
@@ -45,14 +59,15 @@ vec4 calculate_light(DirectionalLight light, vec3 normal, vec3 direction, vec3 e
 	}	
 	
 	//return diffuse_color;
-	return ambient_color * (diffuse_color + specular_color);
+	return (ambient_color + shadow_factor * (diffuse_color + specular_color));
 }
 
-vec4 calculate_point_light(PointLight light, vec3 normal, vec3 world_pos, vec3 eye_world_pos, float specular_power, float specular_intensity)
+vec4 calculate_point_light(PointLight light, vec3 normal, vec3 world_pos, vec3 eye_world_pos, float specular_power, float specular_intensity, vec4 light_space_pos, in sampler2D shadow_map)
 {
     vec3 light_direction = world_pos - light.position;
     float distance = length(light_direction);
     light_direction = normalize(light_direction);
+    float shadow_factor = calc_shadow_factor(light_space_pos, shadow_map);
     
     vec4 ambient_color = vec4(light.color, 1.0f) * light.ambient_intensity;
     float diffuse_factor = dot(normal, -light_direction);
@@ -73,7 +88,7 @@ vec4 calculate_point_light(PointLight light, vec3 normal, vec3 world_pos, vec3 e
         }
     }
 
-    vec4 color = (ambient_color + diffuse_color + specular_color);
+    vec4 color = (ambient_color + shadow_factor * (diffuse_color + specular_color));
 
 
     float attenuation = light.atten.constant +

@@ -6,7 +6,7 @@ layout(location=0) in vec4 a_position;
 layout(location=1) in vec2 a_uv;
 layout(location=2) in vec4 a_color;
 
-layout(location=0) uniform mat4 u_mvp;
+uniform mat4 u_mvp;
 
 out VertexData
 {
@@ -34,8 +34,8 @@ in VertexData
 	vec4 color;
 }vertex_data;
 
-layout(location=1) uniform sampler2D u_texture;
-layout(location=2) uniform int u_use_texture;
+uniform sampler2D u_texture;
+uniform int u_use_texture;
 
 layout (location = 0) out vec4 out_color;
 
@@ -47,5 +47,9 @@ void main()
 		tex_color = texture2D(u_texture, vertex_data.uv.xy);
 	}
 	
-	out_color = tex_color;
+	//out_color = tex_color;
+
+	float depth = texture(u_texture, vertex_data.uv).x;
+	depth = 1.0 - (1.0 - depth) * 25.0;
+	out_color = vec4(depth,depth,depth,1.0);
 }

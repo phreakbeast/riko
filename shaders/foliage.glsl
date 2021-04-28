@@ -15,9 +15,9 @@ layout (points) in;
 layout (triangle_strip) out;
 layout (max_vertices = 4) out;
 
-layout (location = 0) uniform mat4 u_mvp;
-layout (location = 1) uniform vec3 u_cam_pos;
-layout (location = 2) uniform vec4 u_foliage_rect;
+uniform mat4 u_mvp;
+uniform vec3 u_cam_pos;
+uniform vec4 u_foliage_rect;
 
 layout (location = 0) out vec2 v_uv;
 
@@ -57,7 +57,7 @@ void main()
 #version 430 core
 
 
-layout (location = 3) uniform sampler2D u_texture;
+uniform sampler2D u_texture;
 
 layout (location = 0) in vec2 v_uv;
 layout (location = 0) out vec4 out_color;

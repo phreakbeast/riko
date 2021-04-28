@@ -7,7 +7,7 @@ layout (location = 1) in vec2 a_uv;
 layout (location = 2) in float a_tid;
 layout (location = 3) in vec4 a_color;
 
-layout (location = 0) uniform mat4 u_mvp;
+uniform mat4 u_mvp;
 
 out VertexData
 {
@@ -39,14 +39,14 @@ in VertexData
 	vec4  color;
 }vertex_data;
 
-layout (location = 1) uniform sampler2D u_texture_0;
-layout (location = 2) uniform sampler2D u_texture_1;
-layout (location = 3) uniform sampler2D u_texture_2;
-layout (location = 4) uniform sampler2D u_texture_3;
-layout (location = 5) uniform sampler2D u_texture_4;
-layout (location = 6) uniform sampler2D u_texture_5;
-layout (location = 7) uniform sampler2D u_texture_6;
-layout (location = 8) uniform sampler2D u_texture_7;
+uniform sampler2D u_texture_0;
+uniform sampler2D u_texture_1;
+uniform sampler2D u_texture_2;
+uniform sampler2D u_texture_3;
+uniform sampler2D u_texture_4;
+uniform sampler2D u_texture_5;
+uniform sampler2D u_texture_6;
+uniform sampler2D u_texture_7;
 
 layout (location = 0) out vec4 out_color;
 

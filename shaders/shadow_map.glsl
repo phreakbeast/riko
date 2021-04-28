@@ -6,11 +6,11 @@ layout (location = 0) in vec3 a_position;
 layout (location = 1) in vec2 a_uv;
 layout (location = 2) in vec3 a_normal;
 
-layout(location = 0) uniform mat4 u_mvp;
+uniform mat4 u_mvp;
 
 out VertexData
 {
-	vec2 uv;	
+	vec2 uv;
 }vertex_data;
 
 void main()
@@ -25,7 +25,7 @@ void main()
 
 in VertexData
 {
-	vec2 uv;	
+	vec2 uv;
 }vertex_data;
 
 uniform sampler2D u_shadow_map;
@@ -37,4 +37,5 @@ void main()
     float depth = texture(u_shadow_map, vertex_data.uv).x;
     depth = 1.0 - (1.0 - depth) * 25.0;
     out_color = vec4(depth);
+    //out_color = vec4(0,1,0,1);
 }

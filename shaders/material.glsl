@@ -9,9 +9,9 @@ struct Material
 	int has_specular_map;
 	int has_normal_map;
 
-	sampler2D diffuse_map;
-	sampler2D specular_map;
-	sampler2D normal_map;
+		sampler2D diffuse_map;
+		sampler2D specular_map;
+		sampler2D normal_map;
 
 	float specular_level;
 	float specular_power;

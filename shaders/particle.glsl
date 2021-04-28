@@ -7,7 +7,7 @@ layout (location = 2) in vec4 a_uv_rect;
 layout (location = 3) in float a_size;
 layout (location = 4) in float a_life;
 
-layout (location = 0) uniform mat4 u_mv;
+uniform mat4 u_mv;
 
 out VertexData
 {
@@ -35,7 +35,7 @@ layout (points) in;
 layout (triangle_strip) out;
 layout (max_vertices = 4) out;
 
-layout (location = 1) uniform mat4 u_p;
+uniform mat4 u_p;
 
 in VertexData
 {
@@ -99,7 +99,7 @@ void main()
 #version 430 core
 
 
-layout (location = 2) uniform sampler2D u_texture;
+uniform sampler2D u_texture;
 
 in VertexData
 {
